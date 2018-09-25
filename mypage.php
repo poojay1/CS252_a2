@@ -66,9 +66,12 @@ Enter Department Name <input type="text" name="deptname">
 		$x = $result->fetch_assoc()["dept_no"];
 		if ($result->num_rows > 0) {
 			$sql = 'SELECT count(*) AS males FROM employees WHERE emp_no IN (SELECT emp_no FROM dept_emp WHERE dept_no="'. $x .'") AND gender="M"'; 
-			echo $sql;
+			$sql1 = 'SELECT count(*) AS females FROM employees WHERE emp_no IN (SELECT emp_no FROM dept_emp WHERE dept_no="'. $x .'") AND gender="F"'; 
 			$result = $conn->query($sql);
-			echo $result->fetch_assoc()["males"];
+			$result1 = $conn->query($sql1);
+			echo "<h4>",$_POST["deptname"],"</h4>";
+			echo "<table><tr><th>Number of Males</th><th>Number of Females</th></tr>";
+			echo "<tr><td>", $result->fetch_assoc()["males"],"</td><td>",$result1->fetch_assoc()["females"]."</td></tr>";
 		}else{
 			echo "No such department";
 		}
