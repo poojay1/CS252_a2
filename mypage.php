@@ -8,7 +8,7 @@
 <?php
 	$servername = "localhost";
 	$username = "root";
-	$password = "momnaninana";
+	$password = "*******";
 	$db = "employees";
 	// Create connection
 	$conn = mysqli_connect($servername, $username, $password, $db);
